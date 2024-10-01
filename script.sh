@@ -26,6 +26,13 @@ sudo apt purge telnetd rsh-server
 sudo apt autoremove
 
 #ssh
+#install
+if [ -z "$(sudo dpkg -l | grep openssh)" ];
+then
+  sudo apt install ssh
+  sudo systemctl enable sshd.service
+  sudo systemctl start sshd.service
+fi
 #assumes spaces only (not tabs)
 sudo sed -i 's/PermitRootLogin *yes/PermitRootLogin *no/' /etc/ssh/ssh_config
 
@@ -42,6 +49,8 @@ if [ "$new" == "$old" ];
 then
   sudo echo "add_header X-Frame-Options: same origin always" >> $f
 fi
+
+#
 
 #update
 sudo apt update
