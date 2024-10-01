@@ -42,3 +42,7 @@ if [ "$new" == "$old" ];
 then
   sudo echo "add_header X-Frame-Options: same origin always" >> $f
 fi
+
+#update
+sudo apt update
+sudo apt upgrade
