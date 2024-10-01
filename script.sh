@@ -9,6 +9,6 @@ sudo passwd -l root
 #check for nopasswd
 # remove lines with these
 # is this safe though?
-sed 's/.*(nopasswd|!authenticate).*//' /etc/sudoers
+sed -i 's/.*(nopasswd|!authenticate).*//' /etc/sudoers
 
 
