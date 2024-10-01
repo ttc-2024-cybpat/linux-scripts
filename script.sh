@@ -29,3 +29,5 @@ sudo apt autoremove
 #assumes spaces only (not tabs)
 sudo sed -i 's/PermitRootLogin *yes/PermitRootLogin *no/' /etc/ssh/ssh_config
 
+#syncookies
+sudo sysctl -w -n net.ipv4.tcp-syncookies=1
