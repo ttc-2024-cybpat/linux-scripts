@@ -14,7 +14,7 @@ sudo sed -i 's/.*(nopasswd|!authenticate).*//' /etc/sudoers
 #set pam remember to 14
 #try to replace the current value
 old=$(< /etc/pam.d/common-password) 
-sudo sed -i 's/pam_history[  ]\+remember[ ]*=[ ]*[0-9]*/pam_history.so remember=14' /etc/pam.d/common-password
+sudo sed -i 's/pam_history[  ]\+remember[ ]*=[ ]*[0-9]*/pam_history.so remember=14/' /etc/pam.d/common-password
 new=$(< /etc/pam.d/common-password) 
 if [ "$new" == "$old" ];
 then
@@ -31,3 +31,14 @@ sudo sed -i 's/PermitRootLogin *yes/PermitRootLogin *no/' /etc/ssh/ssh_config
 
 #syncookies
 sudo sysctl -w -n net.ipv4.tcp-syncookies=1
+
+#nginx
+#
+f=/etc/nginx/nginx.conf
+old=$(< $f) 
+sudo sed -i 's/add_header X-Frame-Options:.*/add_header X-Frame-Options: same origin always' $f
+new=$(< $f) 
+if [ "$new" == "$old" ];
+then
+  sudo echo "add_header X-Frame-Options: same origin always" >> $f
+fi
