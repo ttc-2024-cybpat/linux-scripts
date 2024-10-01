@@ -24,3 +24,8 @@ fi
 #remove uneccesary pkgs
 sudo apt purge telnetd rsh-server
 sudo apt autoremove
+
+#ssh
+#assumes spaces only (not tabs)
+sudo sed -i 's/PermitRootLogin *yes/PermitRootLogin *no/' /etc/ssh/ssh_config
+
