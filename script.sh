@@ -57,6 +57,12 @@ fi
 sudo systemctl disable ctrl-alt-del.target
 sudo systemctl mask ctrl-alt-del.target
 sudo systemctl daemon-reload
+#for gui
+grep "(?<!#\w*)logout" /etc/dconf/db/local.d/*
+if [ -z "$(grep -x 'logout.*' testing)" ];
+then
+  sudo printf "[org/gnome/settings-daemon/plugins/media-keys]\nlogout=''" > /etc/dconf/db/local.d/00-disable-CAD
+fi
 
 #update
 sudo apt update
