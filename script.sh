@@ -53,7 +53,10 @@ then
   sudo echo "add_header X-Frame-Options: same origin always" >> $f
 fi
 
-#
+#ctrl-alt-delete
+sudo systemctl disable ctrl-alt-del.target
+sudo systemctl mask ctrl-alt-del.target
+sudo systemctl daemon-reload
 
 #update
 sudo apt update
