@@ -21,6 +21,9 @@ then
   sudo echo "pam_history.so remember=14" >> /etc/pam.d/common-password
 fi
 
+#no blank passowrdss
+sudo sed -i 's/nullok//g' /etc/pam.d/common-password
+
 #remove uneccesary pkgs
 sudo apt purge telnetd rsh-server
 sudo apt autoremove
