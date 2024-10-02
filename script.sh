@@ -64,6 +64,10 @@ then
   sudo printf "[org/gnome/settings-daemon/plugins/media-keys]\nlogout=''" > /etc/dconf/db/local.d/00-disable-CAD
 fi
 
+#python
+sudo apt install python
+python3 ./password.py
+
 #update
 sudo apt update
 sudo apt upgrade
