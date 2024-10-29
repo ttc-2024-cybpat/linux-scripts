@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # This script is used to export the secured configuration trees from a standard VM and
 # then to import to a CyberPatriot VM.
